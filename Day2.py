@@ -46,7 +46,7 @@ def open_file():
 
 
 def find_position():
-    """Find position of sub on Day 2."""
+    """Find position of sub on Day 2 - part 1."""
 
     inputs = open_file()
 
@@ -65,4 +65,52 @@ def find_position():
 
     return horizontal * depth
 
-print(find_position())
+inputs2=[
+    ('forward', 5),
+    ('down', 5),
+    ('forward', 8),
+    ('up', 3),
+    ('down', 8),
+    ('forward', 2)
+]
+
+def find_position_pt2():
+    """Find position of sub on Day 2 - part 2."""
+
+    inputs = open_file()
+
+    horizontal = 0
+    depth = 0
+    aim = 0
+
+    inputs2=[
+    ('forward', 5),
+    ('down', 5),
+    ('forward', 8),
+    ('up', 3),
+    ('down', 8),
+    ('forward', 2)
+]
+
+    for item in inputs:
+        print(f'item: {item}')
+        if item[0] == "forward":
+            horizontal += item[1]
+            if aim > 0:
+                add_depth = aim * item[1]
+                depth += add_depth
+        if item[0] == "backward":
+            horizontal -= item[1]
+        if item[0] == "up":
+            aim -= item[1]
+            # depth -= item[1]
+        if item[0] == "down":
+            aim += item[1]
+            # depth += item[1]
+        print(f'horizontal: {horizontal}')
+        print(f'depth: {depth}')
+        print(f'aim: {aim}')
+
+    return horizontal * depth
+
+print(find_position_pt2())
