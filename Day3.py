@@ -13,7 +13,7 @@ def open_file():
     inputs = []
 
     for line in file:
-        line = line.rstrip()
+        line = list(line.rstrip())
         inputs.append(line)
 
     return inputs
@@ -28,21 +28,20 @@ def get_gamma():
 
     inputs = open_file()
     gamma = []
-
+    print(inputs)
     i = 0
 
     # while i < len(inputs):
 
     for item in inputs:
-        # print(item)
         one = 0
         zero = 0
         
-
-        if inputs[i] == "1":
-            one += 1
-        if inputs[i] == "0":
-            zero += 1
+        for char in item:
+            if char == "1":
+                one += 1
+            if char == "0":
+                zero += 1
 
         if one > zero:
             gamma.append("1")
